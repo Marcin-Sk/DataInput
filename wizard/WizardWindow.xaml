@@ -1,0 +1,312 @@
+﻿<Window x:Class="wizard.WizardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wizard"
+        mc:Ignorable="d"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="Wizard Window" Height="450" Width="550">
+    <Grid>
+
+        <!--IntroPage-->
+
+        <xctk:Wizard FinishButtonClosesWindow="True" >
+            <xctk:WizardPage x:Name="IntroPage"
+                             Title="Welcome!"
+                             Description="Wizard will walk you through providing data process." HelpButtonVisibility="Hidden" />
+
+            <!--Page1-->
+
+            <xctk:WizardPage x:Name="Page1" PageType="Interior"
+                             Title="Step 1/6"
+                             Description="First name"
+                             NextPage="{Binding ElementName=Page2}"
+                             PreviousPage="{Binding ElementName=IntroPage}"
+                             CanSelectNextPage="False" HelpButtonVisibility="Hidden" 
+                             Loaded="Page1_Loaded" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150px"/>
+                        <ColumnDefinition Width="5px"/>
+                        <ColumnDefinition Width="350px"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="80px"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Type your first name:" Height="22px"/>
+                    <TextBox Grid.Row="0" Grid.Column="2" Name="firstNameTextBox" 
+                             TextChanged="firstNameTextBox_TextChanged" 
+                             ToolTip="Type your first name" Height="22px"/>
+                    <ProgressBar x:Name="progressBarFilled" Grid.Row="6" Grid.ColumnSpan="3" 
+                                 HorizontalAlignment="Center" 
+                                 Height="40" Grid.RowSpan="2" 
+                                 VerticalAlignment="Bottom" Width="400" 
+                                 Minimum="0" Maximum="100" Value="0"
+                                 Margin="5" >
+                    </ProgressBar>
+                    <TextBlock Grid.Row="6"
+                               Text="{Binding ElementName=progressBarFilled, Path=Value, StringFormat={}{0:0}%}" 
+                               HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.ColumnSpan="3"
+                               Width="400" Margin="5" RenderTransformOrigin="0.5,0.5" FontSize="18.667" FontWeight="Bold" >
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform X="200" Y="-10"/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </Grid>
+            </xctk:WizardPage>
+
+            <!--Page2-->
+
+            <xctk:WizardPage x:Name="Page2" PageType="Interior"
+                             Title="Step 2/6"
+                             Description="Last name"
+                             NextPage="{Binding ElementName=Page3}"
+                             PreviousPage="{Binding ElementName=Page1}"
+                             CanSelectNextPage="False" HelpButtonVisibility="Hidden" 
+                             Loaded="Page2_Loaded" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150px"/>
+                        <ColumnDefinition Width="5px"/>
+                        <ColumnDefinition Width="350px"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="80px"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Type your last name:" Height="22"/>
+                    <TextBox Grid.Column="2" Name="lastNameTextBox" 
+                             TextChanged="lastNameTextBox_TextChanged" 
+                             ToolTip="Type your last name" Height="22"/>
+                    <ProgressBar x:Name="progressBarFilled2" Grid.Row="6" Grid.ColumnSpan="3" 
+                                 HorizontalAlignment="Center" 
+                                 Height="40" Grid.RowSpan="2" 
+                                 VerticalAlignment="Bottom" Width="400" 
+                                 Minimum="0" Maximum="100" Value="0"
+                                 Margin="5" >
+                    </ProgressBar>
+                    <TextBlock Grid.Row="6"
+                               Text="{Binding ElementName=progressBarFilled2, Path=Value, StringFormat={}{0:0}%}" 
+                               HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.ColumnSpan="3"
+                               Width="400" Margin="5" RenderTransformOrigin="0.5,0.5" FontSize="18.667" FontWeight="Bold" >
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform X="200" Y="-10"/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </Grid>
+            </xctk:WizardPage>
+
+            <!--Page3-->
+
+            <xctk:WizardPage x:Name="Page3" PageType="Interior"
+                             Title="Step 3/6"
+                             Description="Address"
+                             NextPage="{Binding ElementName=Page4}"
+                             PreviousPage="{Binding ElementName=Page2}"
+                             CanSelectNextPage="False" HelpButtonVisibility="Hidden" 
+                             Loaded="Page3_Loaded" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150px"/>
+                        <ColumnDefinition Width="5px"/>
+                        <ColumnDefinition Width="350px"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="80px"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Street:" Margin="5" Height="22" />
+                    <TextBox Grid.Row="0" Grid.Column="2" Name="streetTextBox" 
+                             TextChanged="streetTextBox_TextChanged" 
+                             ToolTip="Type street name" Margin="5" KeyDown="streetTextBox_KeyDown" Height="22" />
+                    <TextBlock Grid.Row="1" Text="House number:" Margin="5" Height="22"/>
+                    <TextBox Grid.Row="1" Grid.Column="2" Name="houseTextBox" 
+                             TextChanged="houseTextBox_TextChanged" 
+                             ToolTip="Type house number" Margin="5" 
+                             IsEnabled="False" KeyDown="houseTextBox_KeyDown" Height="22"/>
+                    <TextBlock Grid.Row="2" Text="Flat number (optional):" Margin="5" Height="22"/>
+                    <TextBox Grid.Row="2" Grid.Column="2" Name="flatTextBox" 
+                             TextChanged="flatTextBox_TextChanged" 
+                             ToolTip="Type flat number (optional)" 
+                             Margin="5" IsEnabled="False" KeyDown="flatTextBox_KeyDown" Height="22"/>
+                    <TextBlock Grid.Row="3" Text="Postal code:" Margin="5" Height="22" />
+                    <TextBox Grid.Row="3" Grid.Column="2" Name="postalTextBox" 
+                             TextChanged="postalTextBox_TextChanged" 
+                             ToolTip="Type postal code" Margin="5" IsEnabled="False" 
+                              Height="22" KeyDown="postalTextBox_KeyDown" />
+                    <TextBlock Grid.Row="4" Text="City:" Margin="5"  Height="22"/>
+                    <TextBox Grid.Row="4" Grid.Column="2" Name="cityTextBox" 
+                             TextChanged="cityTextBox_TextChanged" 
+                             ToolTip="Type city name" Margin="5" IsEnabled="False" 
+                              Height="22" KeyDown="cityTextBox_KeyDown" />
+                    <TextBlock Grid.Row="5" Text="Country:" Margin="5" Height="22"/>
+                    <TextBox Grid.Row="5" Grid.Column="2" Name="countryTextBox" 
+                             TextChanged="countryTextBox_TextChanged" 
+                             ToolTip="Type country name" Margin="5" 
+                              Height="22" IsEnabled="False" />
+                    <ProgressBar x:Name="progressBarFilled3" Grid.Row="6" Grid.ColumnSpan="3" 
+                                 HorizontalAlignment="Center" 
+                                 Height="40" Grid.RowSpan="2" 
+                                 VerticalAlignment="Bottom" Width="400" 
+                                 Minimum="0" Maximum="100" Value="0"
+                                 Margin="5" >
+                    </ProgressBar>
+                    <TextBlock Grid.Row="6"
+                               Text="{Binding ElementName=progressBarFilled3, Path=Value, StringFormat={}{0:0}%}" 
+                               HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.ColumnSpan="3"
+                               Width="400" Margin="5" RenderTransformOrigin="0.5,0.5" FontSize="18.667" FontWeight="Bold" >
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform X="200" Y="-10"/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </Grid>
+            </xctk:WizardPage>
+
+            <!--Page4-->
+
+            <xctk:WizardPage x:Name="Page4" PageType="Interior"
+                             Title="Step 4/6"
+                             Description="Phone number"
+                             NextPage="{Binding ElementName=Page5}"
+                             PreviousPage="{Binding ElementName=Page3}"
+                             CanSelectNextPage="False" HelpButtonVisibility="Hidden" Loaded="Page4_Loaded" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150px"/>
+                        <ColumnDefinition Width="5px"/>
+                        <ColumnDefinition Width="350px"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="80px"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Phone number:" Height="22"/>
+                    <TextBox Grid.Column="2" Name="phoneTextBox" 
+                             TextChanged="phoneTextBox_TextChanged" 
+                             ToolTip="Type your phone number"
+                             Height="22" />
+                    <ProgressBar x:Name="progressBarFilled4" Grid.Row="6" Grid.ColumnSpan="3" 
+                                 HorizontalAlignment="Center" 
+                                 Height="40" Grid.RowSpan="2" 
+                                 VerticalAlignment="Bottom" Width="400" 
+                                 Minimum="0" Maximum="100" Value="0"
+                                 Margin="5" >
+                    </ProgressBar>
+                    <TextBlock Grid.Row="6"
+                               Text="{Binding ElementName=progressBarFilled4, Path=Value, StringFormat={}{0:0}%}" 
+                               HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.ColumnSpan="3"
+                               Width="400" Margin="5" RenderTransformOrigin="0.5,0.5" FontSize="18.667" FontWeight="Bold" >
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform X="200" Y="-10"/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </Grid>
+            </xctk:WizardPage>
+
+            <!--Page5-->
+
+            <xctk:WizardPage x:Name="Page5" PageType="Interior"
+                             Title="Step 5/6"
+                             Description="Confirmation"
+                             NextPage="{Binding ElementName=LastPage}"
+                             PreviousPage="{Binding ElementName=Page4}"
+                             CanSelectNextPage="True" HelpButtonVisibility="Hidden"
+                             Loaded="Page5_Loaded" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150px"/>
+                        <ColumnDefinition Width="5px"/>
+                        <ColumnDefinition Width="350px"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="35px"/>
+                        <RowDefinition Height="80px"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" 
+                               Text="Verify carefully that all the data are correct and confirm by clicking &quot;Save data&quot; button:" 
+                               FontStyle="Italic" Margin="5" Grid.ColumnSpan="3" TextAlignment="Center"  Height="22"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Name:" Margin="5" Height="22"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2" Name="nameTextBlock" Margin="5" Height="22" />
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Address:" Margin="5" Height="22" />
+                    <TextBlock Grid.Row="2" Grid.Column="2" Name="streetTextBlock" Margin="5" Height="22" />
+                    <TextBlock Grid.Row="3" Grid.Column="2" Name="postalAndCityTextBlock" Margin="5" Height="22" />
+                    <TextBlock Grid.Row="4" Grid.Column="2" Name="countryTextBlock" Margin="5" Height="22" />
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Phone:" Margin="5" Height="22" />
+                    <TextBlock Grid.Row="5" Grid.Column="2" Name="phoneTextBlock" Margin="5" Height="22" />
+                    <Button Grid.Row="6" Grid.ColumnSpan="3" x:Name="InsertData" Content="Save data"
+                            HorizontalAlignment="Center" Grid.RowSpan="2" 
+                            VerticalAlignment="Bottom" Width="400"  Height="40" Margin="5" 
+                            Click="InsertData_Click" />
+                </Grid>
+            </xctk:WizardPage>
+
+            <!--Page6-->
+
+            <xctk:WizardPage x:Name="LastPage" PageType="Interior"
+                             Title="Step 6/6"
+                             Description="Data provided."
+                             CanFinish="True" CancelButtonVisibility="Hidden" 
+                             BackButtonVisibility="Hidden" HelpButtonVisibility="Hidden"
+                             NextButtonVisibility="Hidden" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400px"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35px"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" 
+                               Text="Thank you for providing data!" 
+                               FontStyle="Italic" Margin="5" Height="22" />
+                </Grid>
+            </xctk:WizardPage>
+        </xctk:Wizard>
+    </Grid>
+</Window>
